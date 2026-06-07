@@ -1,0 +1,50 @@
+{
+  "name": "3D Project Planner",
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "mounts": [
+    {
+      "source": "3d-project-planner-references",
+      "target": "/workspaces/references",
+      "type": "volume"
+    },
+    {
+      "source": "/home/tinomen/Code/wyrd/orthrz",
+      "target": "/workspaces/orthrz",
+      "type": "bind"
+    }
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "window.title": "3D Project Planner"
+      }
+    }
+  },
+
+  "containerEnv": {
+    "DEVCONTAINER_ID": "${devcontainerId}",
+    "HOST_HOSTNAME": "${localEnv:HOSTNAME}",
+    "WORKSPACE_HOME": "${containerWorkspaceFolder}",
+    "PROJECT": "3D Project Planner"
+  },
+
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
+
+  "postCreateCommand": "if command -v agent-browser >/dev/null 2>&1; then agent-browser install --with-deps; fi",
+
+  "shutdownAction": "none",
+
+  "runArgs": [
+    "--name", "3d-project-planner-${devcontainerId}",
+    "-h", "${devcontainerId}",
+    "-l", "devcontainer.id=${devcontainerId}"
+  ]
+}
