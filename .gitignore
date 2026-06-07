@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vite/
+*.local
+*.tsbuildinfo
+node_modules/.tmp/
+.mnemonic/embeddings/
+.mnemonic/projections/
